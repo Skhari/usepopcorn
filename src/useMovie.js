@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const KEY = "5c65c863";
+const KEY = process.env.REACT_APP_KEY;
 export function useMovie(query) {
   const [movies, setMovies] = useState([]);
   // const [watched, setWatched] = useState(tempWatchedData);
@@ -14,7 +14,7 @@ export function useMovie(query) {
           setErrors("");
           setIsLoading(true);
           const res = await fetch(
-            `https://www.omdbapi.com/?s=${query}&apikey=5c65c863`,
+            `https://www.omdbapi.com/?s=${query}&apikey=${KEY}`,
             { signal: controller.signal },
           );
 

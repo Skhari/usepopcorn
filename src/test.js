@@ -54,7 +54,7 @@ import { useKey } from "./useKey";
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-const KEY = "5c65c863";
+const KEY = process.env.REACT_APP_KEY;
 // const temQuery = "Interstellar";
 
 export default function AApp() {
@@ -422,13 +422,13 @@ function MoviesDetail({
       async function getMovieDetails() {
         setIsLoading(true);
         const res = await fetch(
-          `https://www.omdbapi.com/?i=${selectId}&apikey=5c65c863`,
+          `https://www.omdbapi.com/?i=${selectId}&apikey=${KEY}`,
         );
 
         const data = await res.json();
         console.log(data);
         setMovie(data);
-        // fetch(`https://www.omdbapi.com/?i=${selectId}&apikey=5c65c863`)
+        // fetch(`https://www.omdbapi.com/?i=${selectId}&apikey=${key}`)
         //   .then((res) => res.json())
         //   .then((data) => setMovie(data));
         setIsLoading(false);
